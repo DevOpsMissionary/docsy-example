@@ -20,10 +20,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
-          submodules: recursive
+          submodules: 'recursive'
 
       # Runs a set of commands using the runners shell
       - name: Hugo Build
         uses: klakegg/actions-hugo@1.0.0
         with:
           image: "ext-alpine"
+
+      - name: Push docs to branch
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          filepattern: 'docs/**'
