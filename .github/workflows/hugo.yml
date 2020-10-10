@@ -31,4 +31,4 @@ jobs:
       - name: Push docs to branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          filepattern: 'docs/**'
+          file_pattern: 'docs/**'
