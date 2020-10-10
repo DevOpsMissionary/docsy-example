@@ -20,15 +20,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: recursive
 
-      # Runs a set of commands using the runners shell
-      - name: Hugo Build
-        uses: klakegg/actions-hugo@1.0.0
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          image: "ext-alpine"
+          hugo-version: 'latest'
+          extended: true
 
-      - name: Push docs to branch
-        uses: actions-x/commit@v2
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          files: 'docs'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
