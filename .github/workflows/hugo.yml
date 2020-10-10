@@ -29,6 +29,6 @@ jobs:
           image: "ext-alpine"
 
       - name: Push docs to branch
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: actions-x/commit@v2
         with:
-          file_pattern: 'docs/**'
+          files: 'docs'
