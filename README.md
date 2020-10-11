@@ -56,3 +56,9 @@ Once you've cloned the site repo, from the repo root folder, run:
 ```
 hugo server
 ```
+
+## Running with docker image
+
+```
+docker run --rm -i -v $(pwd):/src -e HUGO_DESTINATION=gh-pages klakegg/hugo:ext-alpine
+```
